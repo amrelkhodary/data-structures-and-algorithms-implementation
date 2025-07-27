@@ -1,4 +1,5 @@
 /* This program implements multiple stacks in C*/
+/*WARNING: This code is flawed and has bugs in it, will fix it when I have time.*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,8 +40,6 @@ int main() {
 
     //test the code
     for(int i = 0; i<5; i++) {
-        push(nmulstack, i, 14);
-        push(nmulstack, i, 64);
     }
 
     for(int i = 0; i<5; i++) {
@@ -52,15 +51,15 @@ int main() {
 
 void setup_tops(MulStack* mulstack) {
     for(int i = 0, j = 0; i<mulstack -> size / mulstack -> stack_count; i++, j+=5) {
-        mulstack -> tops[i] = j;
+        mulstack -> tops[i] = j - 1;
     }
 }
 
 void push(MulStack* mulstack, int stack, int element) {
     //check if the specific stack is full
-    if( (mulstack -> tops[stack]) == ( (mulstack -> size / mulstack -> stack_count) * stack - 1)) {
+    if( (mulstack -> tops[stack]) == ( (mulstack -> size / mulstack -> stack_count) * (stack+1) - 1)) {
         //specific stack is full
-        fprintf(stderr, "Cannot add an element to an empty stack.\n");
+        fprintf(stderr, "Cannot add an element to a full stack.\n");
         exit(UNSUCCESSFUL);
     }
 
@@ -69,8 +68,7 @@ void push(MulStack* mulstack, int stack, int element) {
 
 int pop(MulStack* mulstack, int stack) {
     //check if the specific stack is empty
-    if( ((mulstack -> tops[stack]) == ( (mulstack -> size / mulstack -> stack_count) * (stack - 1)) ||
-        (stack == 0) && (mulstack -> tops[stack] == 0))) {
+    if( (mulstack -> tops[stack] == (mulstack -> size / mulstack -> stack_count) * stack) - 1) {
             //specific stack is empty
             fprintf(stderr, "Cannod pop an element off an empty stack.\n");
             exit(UNSUCCESSFUL);
@@ -83,8 +81,7 @@ int pop(MulStack* mulstack, int stack) {
 
 int peek(MulStack* mulstack, int stack) {
     //check if the specific stack is empty
-    if( ((mulstack -> tops[stack]) == ( (mulstack -> size / mulstack -> stack_count) * (stack - 1)) ||
-        (stack == 0) && (mulstack -> tops[stack] == 0))) {
+    if( (mulstack -> tops[stack] == (mulstack -> size / mulstack -> stack_count) * stack) - 1) {
             //specific stack is empty
             fprintf(stderr, "Cannod pop an element off an empty stack.\n");
             exit(UNSUCCESSFUL);
