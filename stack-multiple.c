@@ -49,7 +49,7 @@ int main() {
 }
 
 void setup_tops(MulStack* mulstack) {
-    for(int i = 0, j = 0; i<mulstack -> size / mulstack -> stack_count; i++, j+=5) {
+    for(int i = 0, j = 0; i<mulstack -> size / mulstack -> stack_count; i++, j+=mulstack -> stack_count) {
         mulstack -> tops[i] = j - 1;
     }
 }
@@ -67,7 +67,7 @@ void push(MulStack* mulstack, int stack, int element) {
 
 int pop(MulStack* mulstack, int stack) {
     //check if the specific stack is empty
-    if( (mulstack -> tops[stack] == (mulstack -> size / mulstack -> stack_count) * stack) - 1) {
+    if( (mulstack -> tops[stack]) == ((mulstack -> size / mulstack -> stack_count) * stack - 1)) {
             //specific stack is empty
             fprintf(stderr, "Cannod pop an element off an empty stack.\n");
             exit(UNSUCCESSFUL);
@@ -80,7 +80,7 @@ int pop(MulStack* mulstack, int stack) {
 
 int peek(MulStack* mulstack, int stack) {
     //check if the specific stack is empty
-    if( (mulstack -> tops[stack] == (mulstack -> size / mulstack -> stack_count) * stack) - 1) {
+    if( (mulstack -> tops[stack]) == ((mulstack -> size / mulstack -> stack_count) * stack - 1)) {
             //specific stack is empty
             fprintf(stderr, "Cannod pop an element off an empty stack.\n");
             exit(UNSUCCESSFUL);
