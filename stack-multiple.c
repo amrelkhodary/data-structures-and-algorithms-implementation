@@ -1,5 +1,4 @@
 /* This program implements multiple stacks in C*/
-/*WARNING: This code is flawed and has bugs in it, will fix it when I have time.*/
 
 #include <stdio.h>
 #include <stdlib.h>
