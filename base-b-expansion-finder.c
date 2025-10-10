@@ -6,6 +6,8 @@
     example: 
     input: 241, 2
     output: 11110001
+
+    This program only converts to bases 2,3,4,5,6,7,8,9,16
 */
 
 #include <stdio.h>
@@ -28,7 +30,7 @@ char findHexadecimalCharacter(int number);
 int main(int argc, char** argv) {
     //declaring some program constants and variables 
     const int CORRECT_NUMBER_OF_ARGUMENTS = 2; 
-    const char* INVALID_ARGUMENTS_ERROR_MESSAGE = "Invalid arguments, program has to accept two arguments: the number, and the base b. Please enter them and try again.\n";
+    const char* INVALID_ARGUMENTS_ERROR_MESSAGE = "Invalid arguments, program has to accept two arguments: the number, and the base b, whose values could only be either between 2 and 9, or 16. Please enter them and try again.\n";
     const char* MEMORY_ALLOCATION_ERROR_MESSAGE = "Failed to allocate memory for critical program operations, please try running the program again.\n";
     const size_t INITIAL_RESULT_STRING_SIZE = 25; 
     int number; //decimal number to be converted to base b
@@ -47,6 +49,12 @@ int main(int argc, char** argv) {
         number = atoi(argv[1]);
         base = atoi(argv[2]);
     } else {
+        fprintf(stderr, "%s", INVALID_ARGUMENTS_ERROR_MESSAGE);
+        return INVALID_INPUT;
+    }
+
+    //check if the base is only of the allowed values (2 to 9, and base 16)
+    if(!((base >=2 && base <=9) || (base == 16))) {
         fprintf(stderr, "%s", INVALID_ARGUMENTS_ERROR_MESSAGE);
         return INVALID_INPUT;
     }
