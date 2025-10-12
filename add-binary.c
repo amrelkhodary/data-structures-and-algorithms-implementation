@@ -1,5 +1,8 @@
 /*
     This program implements the algorithm for the addition of two binary numbers 
+    
+    P.S: I know you're thinking this code is ridiculously long, and YOU ARE RIGHT. There was a better 
+         way but by the time I figured it out, I've already written this and didn't have the energy to change it. Sorry. 
 */
 
 #include <stdio.h>
