@@ -18,3 +18,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Postfix Expression Evaluation
 - Parentheses Checker
 - Binary Addition
+- Binary Multiplication
