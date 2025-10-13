@@ -16,4 +16,5 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 # Common Programming Problems Solved Here
 - Infix to Postfix Expression Conversion
 - Postfix Expression Evaluation
-- Parentheses Checker 
+- Parentheses Checker
+- Binary Addition
