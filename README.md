@@ -19,3 +19,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Parentheses Checker
 - Binary Addition
 - Binary Multiplication
+- div and mod
