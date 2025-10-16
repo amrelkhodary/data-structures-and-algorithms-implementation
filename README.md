@@ -20,3 +20,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Binary Addition
 - Binary Multiplication
 - div and mod
+- Fast Modular Exponentiation
