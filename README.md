@@ -6,7 +6,7 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 
 # Data Structures Implemented Here
 - Stack (array based, linkedlist based, multiple)
-# Algorithms Implemented Here
+# Standard Algorithms Implemented Here
 ## Searching
 - Linear Search
 ## Sorting
@@ -22,3 +22,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - div and mod
 - Fast Modular Exponentiation
 - Factorial (Recursive)
+- Greatest Common Divisor (GCD)
