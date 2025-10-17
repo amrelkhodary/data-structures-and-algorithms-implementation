@@ -23,3 +23,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Fast Modular Exponentiation
 - Factorial (Recursive)
 - Greatest Common Divisor (GCD)
+- Fast Exponentiation
