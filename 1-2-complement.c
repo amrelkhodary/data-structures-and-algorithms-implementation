@@ -12,10 +12,13 @@
 
 #define INVALID_INPUT 1
 #define OVERFLOW 2
+#define MAX_NUM_OF_BITS 31
 
 int helper_fastexp(const int BASE, const int EXPONENT);
 void print_booleanexpansion(const uint32_t NUMBER);
 void display_boolexpansion(const uint32_t NUMBER, char* resultptr, const size_t length);
+bool fitsInOnesC(const int NUMBER, const int NUMBER_OF_BITS);
+bool fitsInTwosC(const int NUMBER, const int NUMBER_OF_BITS);
 
 int main(int argc, char** argv) {
     //catch the values passed to the program
@@ -30,9 +33,12 @@ int main(int argc, char** argv) {
                return INVALID_INPUT;
     }
 
+    if(NUMBER_OF_BITS > MAX_NUM_OF_BITS) {
+        fprintf(stderr, "Maximum number of bits allowed in this progarm in 31 bits.\n");
+        return INVALID_INPUT;
+    }
     //determine if the number fits in the amount of allocated bits
-    if ( !((abs(NUMBER) < helper_fastexp(2, NUMBER_OF_BITS - 1)) &&
-        ( (NUMBER >= -1 * helper_fastexp(2, NUMBER_OF_BITS - 1)) && (NUMBER < (helper_fastexp(2, NUMBER_OF_BITS) - 1))))) {
+    if(!(fitsInOnesC(NUMBER, NUMBER_OF_BITS) && fitsInTwosC(NUMBER, NUMBER_OF_BITS))) {
          fprintf(stderr, "Integer Overflow.\n");
          return OVERFLOW;
     }
@@ -47,6 +53,7 @@ int main(int argc, char** argv) {
     printf("1's Complement Representation: %u (in binary: ", ones_complement);
     display_boolexpansion(ones_complement, temp_binoutput, NUMBER_OF_BITS);
     printf(")\n");
+    memset(temp_binoutput, '0', NUMBER_OF_BITS);
     printf("2's Complement Representation: %u (in binary: ", twos_complement);
     display_boolexpansion(twos_complement, temp_binoutput, NUMBER_OF_BITS);
     printf(")\n");
@@ -82,4 +89,24 @@ void display_boolexpansion(const uint32_t NUMBER, char* resultptr, const size_t 
 
 
     printf("%s", resultptr);
+}
+
+bool fitsInOnesC(const int NUMBER, const int NUMBER_OF_BITS) {
+    if(abs(NUMBER) < helper_fastexp(2, NUMBER_OF_BITS - 1)) {
+        return true;
+    }
+
+    return false;
+}
+
+bool fitsInTwosC(const int NUMBER, const int NUMBER_OF_BITS) {
+    if(!(NUMBER >= -1 * helper_fastexp(2, NUMBER_OF_BITS - 1))) {
+        return false;
+    }
+
+    if(!(NUMBER <= helper_fastexp(2, NUMBER_OF_BITS -1 ) - 1)) {
+        return false;
+    }
+
+    return true;
 }
