@@ -25,3 +25,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Greatest Common Divisor (GCD)
 - Fast Exponentiation
 - Finding One's and Two's Complement Representation
+- Finding Cantor's Expansion of Integers
