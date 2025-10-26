@@ -27,3 +27,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Finding One's and Two's Complement Representation
 - Finding Cantor's Expansion of Integers
 - Determining Whether a Number is Prime Using the Trial Division Method
+- Prime Factorization
