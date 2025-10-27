@@ -14,6 +14,9 @@
 #define IS_NUMBER 1
 #define IS_NOT_NUMBER 0
 #define USER_INPUT_VALID 3
+#define MACRO_POLE_A 1
+#define MACRO_POLE_B 2
+#define MACRO_POLE_C 3
 
 //define the stack adt
 typedef struct Stack {
@@ -62,7 +65,6 @@ int pop(Stack* stackptr) {
         fprintf(stderr, "Cannot remove an element from an empty stack\n");
     }
 
-    stackptr -> size--;
     return stackptr -> elements[stackptr -> top--];
 }
 
@@ -154,10 +156,10 @@ void printCurrentState(const Stack* POLE_A, const Stack* POLE_B, const Stack* PO
     printf("\n----------------------------------------------------------------------------------------------------\n\n");
 }
 
-void towersOfHanoi(Stack** poles, const int CURRENT, const int GOAL);
+void towersOfHanoi(Stack** poles, const int CURRENT, const int GOAL, const int COUNT, unsigned long long* rccptr);
 
 int main(int argc, char** argv) {
-    const size_t INITIAL_STACK_SIZE = 10;
+    const size_t INITIAL_STACK_SIZE = 120;
 
     //basic input validation
     if(inputIsValid(argc, argv) == USER_INPUT_ERROR) {
@@ -184,7 +186,13 @@ int main(int argc, char** argv) {
 
     //solve the towers of hanoi problem
     Stack* poles[] = {pole_a, pole_b, pole_c};
-    towersOfHanoi(poles, 1, 3);
+    unsigned long long temp_rcc = 0;
+
+    printCurrentState(poles[0], poles[1], poles[2]);
+    towersOfHanoi(poles, MACRO_POLE_A, MACRO_POLE_C, NUMBER_OF_DISKS, &temp_rcc);
+    printCurrentState(poles[0], poles[1], poles[2]);
+
+    printf("Number of recursive calls: %llu\n", temp_rcc);
     return 0;
 }
 
@@ -193,22 +201,36 @@ int main(int argc, char** argv) {
     WARNING: NEVER change the order of the poles you pass in the poles array, it always has to be pole_a, pole_b then pole_c,
              otherwise, the function will NOT work
 */
-void towersOfHanoi(Stack** poles, const int CURRENT, const int GOAL) {
+void towersOfHanoi(Stack** poles, const int CURRENT, const int GOAL, const int COUNT, unsigned long long* rcc) {
+    /*
+        The recusrive soltion to the towers of hanoi problem:
+            START: Pole A has N rings, goal is to move them to pole C (A -> C)
+            1- move the top n-1 rings to to pole B (A -> B) <-- recursive call
+            2- move the the remaining ring to pole C (A -> C)
+            3- move the n-1 rings to pole C (B -> C) <-- recursive call
+    */
+
+    //CURRENT: the pole the rings in question are currently on
+    //GOAL: the pole the rings in question should be moved to
+    //SPARE: the remaining pole; i.e. the pole that is neither the current or the spare
     /*
         logic behind this is that every pole is given a number (A -> 1, B -> 2, C -> 3) and
         the sum of those is 6, so to get the spare, simply just subtract whatever the current and goal are from 6
     */
-
+(*rcc)++; //track the number of recursve calls! (spoilers: it gets insane! for 27 rings only, you do 201,326,590 function calls!)
     const int SPARE = 6 - (CURRENT + GOAL);
-    printCurrentState(poles[0], poles[1], poles[2]);
 
-    //base case, current contains only one element
-    if(poles[CURRENT - 1] -> top == 0) {
-        //simply just move this element from the CURRENT pole to the GOAL pole
+    //base case: we are trying to move one ring
+    if(COUNT == 1) {
         push(poles[GOAL - 1], pop(poles[CURRENT - 1]));
         return;
     }
 
-     //recursive case, current contains more than one element
-
+    //recursive case: we are trying to move more than one ring
+    //move the top n-1 rings to the spare pole
+    //then move the remaining ring to the goal pole
+    //finally move the n-1 rings to the goal pole
+    towersOfHanoi(poles, CURRENT, SPARE, COUNT - 1, rcc);
+    towersOfHanoi(poles, CURRENT, GOAL, 1, rcc);
+    towersOfHanoi(poles, SPARE, GOAL, COUNT - 1, rcc);
 }
