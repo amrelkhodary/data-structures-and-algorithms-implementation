@@ -23,6 +23,7 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Fast Modular Exponentiation
 - Factorial (Recursive)
 - Greatest Common Divisor (recursive, using prime factorization)
+- Least Common Multiple (using prime factorization)
 - Fast Exponentiation
 - Finding One's and Two's Complement Representation
 - Finding Cantor's Expansion of Integers
