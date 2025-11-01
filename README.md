@@ -22,7 +22,7 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - div and mod
 - Fast Modular Exponentiation
 - Factorial (Recursive)
-- Greatest Common Divisor (GCD)
+- Greatest Common Divisor (recursive, using prime factorization)
 - Fast Exponentiation
 - Finding One's and Two's Complement Representation
 - Finding Cantor's Expansion of Integers
