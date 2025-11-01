@@ -1,4 +1,4 @@
-# My Implementation of Various Data Structures and Algorithms
+# My Implementation of Various Data Structures, Algorithms and Common Programming Problems
 
 This repository contains my hands-on implementations, using the C programming language, of common data structures, algorithms, and solutions to famous coding problems. It is for educational purposes only and not intended to be used for any professional purpose. It is not structured like a professional C project where you have source, header and binary files stored in separate directories. Rather, each source file is intended to be a whole stand-alone program.
 
