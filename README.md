@@ -32,4 +32,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Towers of Hanoi (Recursive)
 - Extended Euclidean Algorithm
 - Inverse mod m (brute force)
-
+- Computer Arithmetic with Large Numbers using the Chinese Remainder Theorem
