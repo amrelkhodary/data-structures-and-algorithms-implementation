@@ -24,7 +24,6 @@ int main(int argc, char** argv) {
     //catch the values passed to the program
     const int NUMBER = atoi(argv[1]);
     const int NUMBER_OF_BITS = atoi(argv[2]);
-
     //input validation
     if(! ( (argc == 3) &&
            (strcmp(argv[1], "0") == 0 || NUMBER != 0) &&

@@ -33,3 +33,4 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 - Extended Euclidean Algorithm
 - Inverse mod m (brute force)
 - Computer Arithmetic with Large Numbers using the Chinese Remainder Theorem
+- Calculating Significant Figures in a Number
