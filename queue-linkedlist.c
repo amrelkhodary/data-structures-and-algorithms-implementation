@@ -1,5 +1,5 @@
 /*
- * this program implements a queue (more accurately, a circular queue) using a linked list
+ * this program implements a queue using a doubly linked list
  */
 
 #include <stdio.h>
