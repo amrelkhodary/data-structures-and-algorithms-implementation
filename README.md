@@ -6,7 +6,7 @@ The code here is covered by the GNU General Public License (GPL), which means yo
 
 # Data Structures Implemented Here
 - Stack (array based, linkedlist based, multiple)
-- Queue (array based) 
+- Queue (circular array based, doubly linked list based) 
 # Standard Algorithms Implemented Here
 ## Searching
 - Linear Search

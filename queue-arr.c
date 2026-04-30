@@ -1,3 +1,7 @@
+/*
+ * this program implements a queue (more accurately, a circular queue) using an array
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 
