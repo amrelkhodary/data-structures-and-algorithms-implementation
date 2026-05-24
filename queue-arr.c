@@ -56,18 +56,20 @@ int dequeue(queue* queue) {
         return 1;
     }
 
+    //store the element to be dequeued, replace it with 0
+    int returnval = queue -> elements[queue -> queue_start];
+    queue -> elements[queue -> queue_start] = 0;
+
     if(queue -> queue_start == queue -> queue_end) {
         //there is only one element in the queue
         //reset the queue back to the empty state
-        queue -> elements[queue -> queue_start] = 0;
         queue -> queue_start = -1;
         queue -> queue_end = -1;
-        return 0;
+        return returnval;
     }
 
-    queue -> elements[queue -> queue_start] = 0;
     queue -> queue_start = (queue -> queue_start + 1) % queue -> size;
-    return 0;
+    return returnval;
 }
 
 void printqueue(queue* queue) {
